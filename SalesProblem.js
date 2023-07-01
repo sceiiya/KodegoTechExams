@@ -31,7 +31,7 @@ function topProduct(data){
         profits = pushProfits(data);
 
         let topProfit = Math.max(...profits);
-        const bond = [ -22, 35, -81, -1, -75 ];
+        // const bond = [ -22, 35, -81, -1, -75 ];
         return data.findIndex(data => Object.values(data)[0] === topProfit)
         // return bond.findIndex(topProfit);
         // return topProfit;
@@ -41,3 +41,13 @@ function topProduct(data){
 
 // topProduct(productProfitArray) // 35
 console.log(topProduct(productProfitArray));
+
+
+// snake_case
+// camelCase
+// PascalCase
+// kebab-case
+
+// implicit vs explpicit
+// conversion is implicit
+// coercion is explicit
