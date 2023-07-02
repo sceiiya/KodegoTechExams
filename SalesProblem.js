@@ -51,6 +51,24 @@ function topProduct(data){
     }
 }
 
+function bottomProduct(data){
+    if (data.length === 0) {
+        return 'No Data';
+    } else if (data === ''){
+        return 'No Data';
+    }else{
+        let profits = pushProfits(data);
+        let names = pushProducts(data);
+
+        let bottomProfit = Math.min(...profits);
+        
+        let pos = data.findIndex(data => Object.values(data)[0] === bottomProfit    );
+        return names[pos];
+    }
+}
+
+
 
 // topProduct(productProfitArray) // 35
-console.log(topProduct(productProfitArray));
+console.log(topProduct(productProfitArray)); //Product B
+console.log(bottomProduct(productProfitArray)); //Product C
