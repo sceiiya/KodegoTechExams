@@ -19,20 +19,33 @@ function pushProfits(data){
     return profits;
 }
 
+function pushProducts(data){
+    //instantiate profit variable
+    let productsName = [];
+
+    //store each value of the key in arry of objects
+    data.forEach(product => {
+        const name = Object.keys(product)[0];
+        productsName.push(name);
+    });    
+    return productsName;
+}
 
 function topProduct(data){
     //return value based on the condition
     if (data.length === 0) {
-        return 'empty array of product profit';
+        return 'No Data';
     } else if (data === ''){
-        return 'insufficient information to process data';
+        return 'No Data';
     }else{
-        let profits;
-        profits = pushProfits(data);
+        let profits = pushProfits(data);
+        let names = pushProducts(data);
 
         let topProfit = Math.max(...profits);
         // const bond = [ -22, 35, -81, -1, -75 ];
-        return data.findIndex(data => Object.values(data)[0] === topProfit)
+        
+        let pos = data.findIndex(data => Object.values(data)[0] === topProfit);
+        return names[pos];
         // return bond.findIndex(topProfit);
         // return topProfit;
     }
@@ -41,13 +54,3 @@ function topProduct(data){
 
 // topProduct(productProfitArray) // 35
 console.log(topProduct(productProfitArray));
-
-
-// snake_case
-// camelCase
-// PascalCase
-// kebab-case
-
-// implicit vs explpicit
-// conversion is implicit
-// coercion is explicit
