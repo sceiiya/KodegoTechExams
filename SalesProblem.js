@@ -3,12 +3,14 @@ function pushProfits(data, abs){
     let profits = [];
 
     if(abs === 'abs'){
+        //for absolute value storage
         data.forEach(product => {
             const profit = Math.abs(Object.values(product)[0]);
             profits.push(profit);
         });    
         return profits;    
     }
+
     //store each value of the key in arry of objects
     data.forEach(product => {
         const profit = Object.values(product)[0];
