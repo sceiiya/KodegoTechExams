@@ -1,20 +1,17 @@
-function pushProfits(data){
+function pushProfits(data, abs){
     //instantiate profit variable
     let profits = [];
 
+    if(abs === 'abs'){
+        data.forEach(product => {
+            const profit = Math.abs(Object.values(product)[0]);
+            profits.push(profit);
+        });    
+        return profits;    
+    }
     //store each value of the key in arry of objects
     data.forEach(product => {
         const profit = Object.values(product)[0];
-        profits.push(profit);
-    });    
-    return profits;
-}
-
-function pushAbsProfits(data){
-    let profits = [];
-
-    data.forEach(product => {
-        const profit = Math.abs(Object.values(product)[0]);
         profits.push(profit);
     });    
     return profits;
@@ -72,7 +69,7 @@ function zeroProfitProduct(data){
     } else if (data === ''){
         return 'No Data';
     }else{
-        let profits = pushAbsProfits(data);
+        let profits = pushProfits(data, 'abs');
         let names = pushProducts(data);
 
         let closestToZero = Math.min(...profits);
