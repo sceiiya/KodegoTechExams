@@ -1,10 +1,10 @@
 
 const productProfitArray = [
-    {"Product A": -75},
-    {"Product B": -70},
-    {"Product C": 98},
-    {"Product D": 5},
-    {"Product E": -29},
+    {"Product A": -22},
+    {"Product B": 35},
+    {"Product C": -81},
+    {"Product D": -1},
+    {"Product E": -75},
 ];
 
 function pushProfits(data){
