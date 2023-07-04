@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <title>API Testing</title>
+</head>
+<body>
+    <h1>Cryptocurrency Rates</h1>
+    <a href="https://www.coingecko.com/">
+        <h4>source: CoinGecko</h4>
+    </a>
+
+    <div id="exchanges-container">
+        <ul id="exchange-rate-list">
+            <li class="item">
+                <div class="value">
+                    BTC
+                </div>
+                <div class="description">
+                    <p>Rate:  $</p>
+                    <p>Name:  </p>
+                    <p>Unit:  </p>
+                </div>
+            </li>
+        </ul>
+        <div id="loader" class="loader"></div>
+        <div id="notification"></div>
+    </div>
+
+</body>
+</html>
+
+<script type="text/js" src="index.js"></script>
