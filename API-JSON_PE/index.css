@@ -1,5 +1,5 @@
 body {
-    background-color: #3d3d3d;
+    background-color: #666666;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -11,7 +11,7 @@ h1, h4 {
 }
 
 #exchanges-container {
-    background-color: aquamarine;
+    background-color: #666666;
     max-width: 650px;
     margin: 0 auto;
 }
@@ -19,6 +19,12 @@ h1, h4 {
 #exchange-rate-list {
     list-style-type: none;
     padding: 0;
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
+#exchange-rate-list::-webkit-scrollbar {
+    display: none;
 }
 
 .loader {
@@ -26,7 +32,7 @@ h1, h4 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     align-items: center;
     border: 6px solid #f3f3f3;
@@ -60,15 +66,6 @@ h1, h4 {
 }
 
 .value{
-    /* display: flex;
-    flex-direction: row;
-    text-align: center;
-    vertical-align: middle;
-    justify-items: center;
-    padding: 14px;
-    width: 18%;
-    background-color: rgb(212, 212, 212); */
-
     display: flex;
     align-items: center;
     justify-content: center;
