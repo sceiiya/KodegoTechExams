@@ -13,13 +13,9 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* overflow: hidden; */
   }
   
   .background {
-    /* position: absolute; */
-    /* top: 0; */
-    /* left: 0; */
     position: absolute;
     width: 100%;
     height: 100%;
@@ -33,21 +29,9 @@
     left: 50%;
     transform: translate(-50%, -70%);
 
-    /* position: absolute; */
-    /* top: 0; */
-    /* left: 0; */
-    /* opacity: 0; */
-    /* animation: fade-in 1s ease-in forwards; */
   }
   
   .text-container {
-    /* position: absolute; */
-    /* top: 50%; */
-    /* left: 50%; */
-    /* transform: translate(-50%, -50%); */
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* align-items: center; */
   }
   
   .headline1 img,
@@ -57,11 +41,6 @@
   .logo img,
   .replay-button img {
     width: 100%;
-    /* object-fit: contain; */
-    /* position: absolute; */
-    /* display: block; */
-    /* width: 100%; */
-    /* opacity: 0; */
   }
 
   .headline1,
@@ -70,11 +49,9 @@
   .learn-more,
   .logo,
   .replay-button{
-    /* object-fit: contain; */
     position: absolute;
     display: block;
     width: 100%;
-    /* opacity: 0; */
   }
 
   /* animations */
@@ -83,14 +60,12 @@
 }
 
   .headline1 {
-    /* animation: slide-in-left 1s ease-in forwards; */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -45%);
   }
   
   .headline2 {
-    /* animation: slide-in-right 1s ease-in forwards 1s; */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -75%);
@@ -98,7 +73,6 @@
   }
   
   .subheadline {
-    /* animation: fade-in 1s ease-in forwards 2s; */
     top: 50%;
     left: 50%;
     transform: translate(-65%, -45%);
@@ -106,10 +80,8 @@
   }
   
   .learn-more {
-    /* animation: fade-in 1s ease-in forwards 3s; */
     top: 50%;
     left: 50%;
-    /* transform: translate(-50%, -45%); */
     width: 65%;
     transform: translate(-50%, 60%);
   }
@@ -119,17 +91,14 @@
   }
   
   .logo {
-    /* animation: slide-in-right 1s ease-in forwards 4s; */
     top: 50%;
     left: 50%;
     transform: translate(-15%, -95%);
-    /* transform: translate(-80%, 0); */
     transition: all 2s;
     width: 65%;
   }
   
   .replay-button {
-    /* animation: fade-in 1s ease-in forwards 5s; */
     cursor: pointer;
     top: 50%;
     left: 50%;
