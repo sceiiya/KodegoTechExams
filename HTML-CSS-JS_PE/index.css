@@ -1,5 +1,6 @@
 *{
   background-color: rgba(187, 0, 0, 0.24);
+  transition: 2s all;
 }
 
 .container {
@@ -12,7 +13,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
     /* overflow: hidden; */
   }
   
@@ -76,7 +76,12 @@
     width: 100%;
     /* opacity: 0; */
   }
-  
+
+  /* animations */
+.logo img{
+  transform: translate(0, 0);
+}
+
   .headline1 {
     /* animation: slide-in-left 1s ease-in forwards; */
     top: 50%;
@@ -104,9 +109,13 @@
     /* animation: fade-in 1s ease-in forwards 3s; */
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -45%);
+    /* transform: translate(-50%, -45%); */
     width: 65%;
     transform: translate(-50%, 60%);
+  }
+  
+  .lefto-right{
+
   }
   
   .logo {
@@ -114,6 +123,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-15%, -95%);
+    /* transform: translate(-80%, 0); */
+    transition: all 2s;
     width: 65%;
   }
   
