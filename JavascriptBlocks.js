@@ -28,3 +28,23 @@
 
 //     2. Given blocks = [1, 5, 5, 2, 6], the function should return 4.  If starting from blocks[3],
 //  the first frog can jump to blocks[1], but not blocks[0], and the second frog can jump to blocks[4].
+
+function solution(blocks) {
+    let ans= 0;
+    for(let i=0; i<blocks.length; i++){
+        let leftMax=i;
+        let rightMax=i;
+        //go to left
+        while(leftMax-1 >= 0 && blocks[leftMax] <= blocks[leftMax-1]){
+            leftMax--;
+        }
+        while(rightMax+1 < blocks.length && blocks[rightMax] <= blocks[rightMax+1]){
+            rightMax++;
+        }
+        ans= Math.max(ans, rightMax - leftMax +1);
+    }
+    return ans;
+}
+
+console.log(solution([2, 6, 8, 5])) // 3
+console.log(solution([1, 5, 5, 2, 6])) // 4
