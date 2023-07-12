@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 // import viteLogo from '/vite.svg'
 import './App.css'
 import Square from './components/Square'
+import Scoreboard from './components/Scoreboard';
 
 const App = () => {
 
@@ -184,14 +185,10 @@ const toggle = (i) => {
         {status ? 'NEW GAME' : 'RESET'}
       </div>
 
-      <div 
-        className='scoreboard'
-      >
-        SCOREBOARD
-        <div> X = {scoreboardVal.X == null ? 0 : scoreboardVal.X} </div>
-        <div> O = {scoreboardVal.O == null ? 0 : scoreboardVal.O} </div>
-
-      </div>
+      <Scoreboard 
+      X={scoreboardVal.X}
+      O={scoreboardVal.O}
+      />
 
     </>
   )
