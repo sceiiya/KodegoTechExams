@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import './App.css'
 import Square from './components/Square'
 import Scoreboard from './components/Scoreboard';
@@ -73,6 +71,7 @@ indicator = `${turnValue()}'S TURN`;
   // console.log(sqValue)
 
 const checkWinner = (sqValue) => {
+  
   // rule for winning
   const lines = [
     [0, 1, 2],
@@ -85,7 +84,7 @@ const checkWinner = (sqValue) => {
     [2, 4, 6],
   ];
 
-for (let i = 0; i < lines.length; i++) {
+for (let i = 0; i < lines.length; i++) { //loop to check every possible line of victory
   const [a, b, c] = lines[i];
   if(sqValue[a] === 'X' && sqValue[b] === 'X' && sqValue[c] === 'X'){ //condition for winning X
     setStatus(true );
@@ -164,11 +163,9 @@ const toggle = (i) => {
   return (
     <>
       <div className='square-container'>
-
         {sqValue.map( (val, i) =>
           (<Square key={i} value={val} toggle={toggle} i={i}/>)
         )}
-
       </div>
 
       <Indicator status={status} winner={winner} message={indicator} />
