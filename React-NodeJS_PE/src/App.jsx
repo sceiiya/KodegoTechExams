@@ -7,6 +7,7 @@ import Reset from './components/Reset';
 
 const App = () => {
 
+  // initialize squares
   const SqValue = [
     '',
     '',
@@ -34,19 +35,21 @@ const turnValue = () => {
   }
 } 
 
+// default message for indicator
 indicator = `${turnValue()}'S TURN`;
 
-  const handleReset = () => {
-    const newArr = [];
-    for (let i = 0; i < 9; i++) {
-      newArr.push('');
-    }
-    
-    setSqValue(newArr);
-    setTurn(false);
-    setStatus(false);
-    setWinner('');
+//reset board
+const handleReset = () => {
+  const newArr = [];
+  for (let i = 0; i < 9; i++) {
+    newArr.push('');
   }
+  
+  setSqValue(newArr);
+  setTurn(false);
+  setStatus(false);
+  setWinner('');
+}
 
 const checkWinner = (sqValue) => {
   
@@ -107,11 +110,13 @@ useEffect(() => {
   
 }, [winner]);
 
+// will get the value form session storage intto state
 useEffect( () => {
   const scoreboard = JSON.parse(sessionStorage.getItem('scoreboard') || '{}');
   setScoreboardVal(scoreboard)
 }, [winner])
 
+// will reset the scoreboard from the session storage
 const resetScoreboard = () => {
     const newScoreboard = {'X': 0, 'O': 0};
     sessionStorage.setItem('scoreboard', JSON.stringify(newScoreboard));
