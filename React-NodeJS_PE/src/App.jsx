@@ -130,9 +130,17 @@ useEffect(() => {
 }, [winner]);
 
 useEffect( () => {
+  const scoreboard = JSON.parse(sessionStorage.getItem('scoreboard') || '{}');
+  setScoreboardVal(scoreboard)
+}, [winner])
+
+const resetScoreboard = () => {
+    const newScoreboard = {'X': 0, 'O': 0};
+    sessionStorage.setItem('scoreboard', JSON.stringify(newScoreboard));
+
     const scoreboard = JSON.parse(sessionStorage.getItem('scoreboard') || '{}');
     setScoreboardVal(scoreboard)
-}, [winner])
+}
 
 const toggle = (i) => {
   // do nothing if the game is over
@@ -172,7 +180,7 @@ const toggle = (i) => {
 
       <Reset status={status} handleReset={handleReset} />
 
-      <Scoreboard X={scoreboardVal.X} O={scoreboardVal.O} />
+      <Scoreboard X={scoreboardVal.X} O={scoreboardVal.O} resetScoreboard={resetScoreboard} />
 
     </>
   )
