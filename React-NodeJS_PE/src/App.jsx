@@ -25,6 +25,8 @@ const [turn, setTurn] = useState(false);  // whos turn, false = X ; true = O
 const [status, setStatus] = useState(false); // game status
 const [winner, setWinner] = useState('');  // if there is a winner already
 let indicator = ''; // initialize indicator message 
+const [occupied, setOccupied] = useState(0); // indicator if all boxes are ooccupied
+const [draw, setDraw] = useState(false); // draw state
 
 // whos turn, false = X ; true = O
 const turnValue = () => {
@@ -49,6 +51,8 @@ const handleReset = () => {
   setTurn(false);
   setStatus(false);
   setWinner('');
+  setOccupied(0);
+  setDraw(false);
 }
 
 const checkWinner = (sqValue) => {
@@ -86,6 +90,13 @@ useEffect( () => { //check if there are already a winner
   checkWinner(sqValue);
 }, [sqValue]);
 
+useEffect(()=>{
+  if (occupied === 9 && !status) {
+    setStatus(true);
+    setDraw(true);
+    indicator = 'DRAW';
+  }
+}, [occupied])
 
 const [scoreboardVal, setScoreboardVal] = useState({}); //state for scoreboard
 
@@ -143,6 +154,8 @@ const toggle = (i) => {
       return SqArr;  
   })
 
+  setOccupied( occ => occ + 1 );
+
   // switch turns
   setTurn( lastTurn => !lastTurn);
 }
@@ -155,7 +168,7 @@ const toggle = (i) => {
         )}
       </div>
 
-      <Indicator status={status} winner={winner} message={indicator} />
+      <Indicator status={status} winner={winner} message={indicator} draw={draw} />
 
       <Reset status={status} handleReset={handleReset} />
 
