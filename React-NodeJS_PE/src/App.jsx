@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import './App.css'
 import Square from './components/Square'
 import Scoreboard from './components/Scoreboard';
+import Indicator from './components/Indicator';
 
 const App = () => {
 
@@ -169,14 +170,7 @@ const toggle = (i) => {
 
       </div>
 
-      <div className='turn-indicator-cont'>
-        <div className={status ? 'turn-indicator' : 'hidden'}>
-          WINNER: {winner}
-        </div>
-        <div className={!status ? 'turn-indicator' : 'hidden'}>
-          {indicator}
-        </div>
-      </div>
+      <Indicator status={status} winner={winner} message={indicator}/>
 
       <div 
         className='reset'
