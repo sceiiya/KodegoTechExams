@@ -48,28 +48,6 @@ indicator = `${turnValue()}'S TURN`;
     setWinner('');
   }
 
-  // const toggle = (i) => {
-
-  //   setSqValue(  (sqArr) => {
-  //     const SqArr = [...sqArr];
-
-  //     if(SqArr[i] == 'O'){
-  //       SqArr[i] = '';
-  //       return SqArr;  
-  //     }else if(SqArr[i] == 'X'){
-  //       SqArr[i] = 'O';
-  //       return SqArr;  
-  //     }else{
-  //       SqArr[i] = 'X';
-  //       return SqArr;  
-  //     }
-
-  //   })
-  //   // console.log(sqValue);
-  // }
-
-  // console.log(sqValue)
-
 const checkWinner = (sqValue) => {
   
   // rule for winning
