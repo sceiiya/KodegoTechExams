@@ -5,6 +5,7 @@ import './App.css'
 import Square from './components/Square'
 import Scoreboard from './components/Scoreboard';
 import Indicator from './components/Indicator';
+import Reset from './components/Reset';
 
 const App = () => {
 
@@ -170,19 +171,11 @@ const toggle = (i) => {
 
       </div>
 
-      <Indicator status={status} winner={winner} message={indicator}/>
+      <Indicator status={status} winner={winner} message={indicator} />
 
-      <div 
-        className='reset'
-        onClick={handleReset}
-      >
-        {status ? 'NEW GAME' : 'RESET'}
-      </div>
+      <Reset status={status} handleReset={handleReset} />
 
-      <Scoreboard 
-      X={scoreboardVal.X}
-      O={scoreboardVal.O}
-      />
+      <Scoreboard X={scoreboardVal.X} O={scoreboardVal.O} />
 
     </>
   )
