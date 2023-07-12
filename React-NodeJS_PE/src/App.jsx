@@ -162,11 +162,7 @@ const toggle = (i) => {
 
   // switch turns
   setTurn( lastTurn => !lastTurn);
-  // console.log(sqValue);
 }
-
-// console.log(status);
-// console.log(checkWinner(sqValue));
 
   return (
     <>
