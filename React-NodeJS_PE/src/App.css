@@ -103,3 +103,15 @@ body{
 .scoreboard div{
   padding: 2px, 0, 0, 17px;
 }
+
+.scoreboard-reset{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 15px;
+  padding-bottom: 15px;
+}
+
+.scoreboard-reset svg{
+  cursor: pointer;
+}
