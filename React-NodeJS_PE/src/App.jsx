@@ -72,7 +72,7 @@ const checkWinner = (sqValue) => {
 for (let i = 0; i < lines.length; i++) { //loop to check every possible line of victory
   const [a, b, c] = lines[i];
   if(sqValue[a] === 'X' && sqValue[b] === 'X' && sqValue[c] === 'X'){ //condition for winning X
-    setStatus(true );
+    setStatus(true);
     setWinner(sqValue[a]);
     indicator = `Winner: ${sqValue[a]}`;
     return sqValue[a];
@@ -91,6 +91,7 @@ useEffect( () => { //check if there are already a winner
 }, [sqValue]);
 
 useEffect(()=>{
+  // console.log(draw);
   if (occupied === 9 && !status) {
     setStatus(true);
     setDraw(true);
