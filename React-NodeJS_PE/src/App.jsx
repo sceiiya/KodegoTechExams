@@ -133,22 +133,24 @@ useEffect( () => {
 }, [winner])
 
 const toggle = (i) => {
-
+  // do nothing if the game is over
   if(status){
     return;
   }
+
+  // do nothing if the square already used
   if(sqValue[i] != ''){
     return;
   }
 
+  //change state of the clicked square 
   setSqValue(  (sqArr) => {
     const SqArr = [...sqArr];
-
       SqArr[i] = turnValue();
       return SqArr;  
-
   })
 
+  // switch turns
   setTurn( lastTurn => !lastTurn);
   // console.log(sqValue);
 }
@@ -157,7 +159,6 @@ const toggle = (i) => {
 // console.log(checkWinner(sqValue));
 
   return (
-    
     <>
       <div className='square-container'>
 
