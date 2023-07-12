@@ -1,33 +1,197 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React, { useState, useEffect } from 'react'
+// import reactLogo from './assets/react.svg'
+// import viteLogo from '/vite.svg'
 import './App.css'
+import Square from './components/Square'
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+
+  const SqValue = [
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+  ];
+
+const [sqValue, setSqValue] = useState(SqValue); //value for each square
+const [turn, setTurn] = useState(false);  // whos turn, false = X ; true = O
+const [status, setStatus] = useState(false); // game status
+const [winner, setWinner] = useState('');  // if there is a winner already
+let indicator = ''; // initialize indicator message 
+
+// whos turn, false = X ; true = O
+const turnValue = () => {
+  if (turn){
+    return 'O';
+  }else{
+    return 'X';
+  }
+} 
+
+indicator = `${turnValue()}'S TURN`;
+
+  const handleReset = () => {
+    const newArr = [];
+    for (let i = 0; i < 9; i++) {
+      newArr.push('');
+    }
+    
+    setSqValue(newArr);
+    setTurn(false);
+    setStatus(false);
+    setWinner('');
+  }
+
+  // const toggle = (i) => {
+
+  //   setSqValue(  (sqArr) => {
+  //     const SqArr = [...sqArr];
+
+  //     if(SqArr[i] == 'O'){
+  //       SqArr[i] = '';
+  //       return SqArr;  
+  //     }else if(SqArr[i] == 'X'){
+  //       SqArr[i] = 'O';
+  //       return SqArr;  
+  //     }else{
+  //       SqArr[i] = 'X';
+  //       return SqArr;  
+  //     }
+
+  //   })
+  //   // console.log(sqValue);
+  // }
+
+  // console.log(sqValue)
+
+const checkWinner = (sqValue) => {
+  // rule for winning
+  const lines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+
+for (let i = 0; i < lines.length; i++) {
+  const [a, b, c] = lines[i];
+  if(sqValue[a] === 'X' && sqValue[b] === 'X' && sqValue[c] === 'X'){ //condition for winning X
+    setStatus(true );
+    setWinner(sqValue[a]);
+    indicator = `Winner: ${sqValue[a]}`;
+    return sqValue[a];
+  }else if(sqValue[a] === 'O' && sqValue[b] === 'O' && sqValue[c] === 'O'){ //condition for winning O
+    setStatus(true);
+    setWinner(sqValue[a]);
+    indicator = `Winner: ${sqValue[a]}`;
+    return sqValue[a];
+  }
+}
+  return ;
+}
+
+useEffect( () => { //check if there are already a winner
+  checkWinner(sqValue);
+}, [sqValue]);
+
+
+const [scoreboardVal, setScoreboardVal] = useState({}); //state for scoreboard
+
+useEffect(() => {
+  // get score from the session storage
+  const scoreboard = JSON.parse(sessionStorage.getItem('scoreboard') || '{}');
+
+  // set score for the winner
+  if (winner === 'X') {
+    const updatedScoreboard = { // set X score
+      ...scoreboard,
+      X: (scoreboard.X || 0) + 1
+    };
+    sessionStorage.setItem('scoreboard', JSON.stringify(updatedScoreboard));
+  } else if (winner === 'O') { // set O score
+    const updatedScoreboard = {
+      ...scoreboard,
+      O: (scoreboard.O || 0) + 1
+    };
+    sessionStorage.setItem('scoreboard', JSON.stringify(updatedScoreboard));
+  }
+  
+}, [winner]);
+
+useEffect( () => {
+    const scoreboard = JSON.parse(sessionStorage.getItem('scoreboard') || '{}');
+    setScoreboardVal(scoreboard)
+}, [winner])
+
+const toggle = (i) => {
+
+  if(status){
+    return;
+  }
+  if(sqValue[i] != ''){
+    return;
+  }
+
+  setSqValue(  (sqArr) => {
+    const SqArr = [...sqArr];
+
+      SqArr[i] = turnValue();
+      return SqArr;  
+
+  })
+
+  setTurn( lastTurn => !lastTurn);
+  // console.log(sqValue);
+}
+
+// console.log(status);
+// console.log(checkWinner(sqValue));
 
   return (
+    
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className='square-container'>
+
+        {sqValue.map( (val, i) =>
+          (<Square key={i} value={val} toggle={toggle} i={i}/>)
+        )}
+
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+
+      <div className='turn-indicator-cont'>
+        <div className={status ? 'turn-indicator' : 'hidden'}>
+          WINNER: {winner}
+        </div>
+        <div className={!status ? 'turn-indicator' : 'hidden'}>
+          {indicator}
+        </div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
+      <div 
+        className='reset'
+        onClick={handleReset}
+      >
+        {status ? 'NEW GAME' : 'RESET'}
+      </div>
+
+      <div 
+        className='scoreboard'
+      >
+        SCOREBOARD
+        <div> X = {scoreboardVal.X == null ? 0 : scoreboardVal.X} </div>
+        <div> O = {scoreboardVal.O == null ? 0 : scoreboardVal.O} </div>
+
+      </div>
+
     </>
   )
 }
