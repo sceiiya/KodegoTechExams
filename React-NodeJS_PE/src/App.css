@@ -1,6 +1,6 @@
 body{
   justify-content: center;
-  background-color: rgb(206, 94, 206);
+  background-color: rgba(209, 135, 209, 0.733);
 
 }
 
@@ -32,9 +32,10 @@ body{
   width: 170px;
   height: 170px;
   padding: auto;
-  background-color: purple;
+  background-color: rgb(165, 31, 165);
   margin: 0;
-  box-shadow: 7px 7px rgb(243, 243, 243) inset, -10px -10px rgba(73, 73, 73, 0.39) inset, -3px -3px rgba(34, 34, 34, 0.39) inset;
+  box-shadow: 7px 7px rgb(243, 165, 253) inset, -10px -10px rgba(73, 73, 73, 0.39) inset, -3px -3px rgba(34, 34, 34, 0.39) inset;
+  color: white;
   font-weight: 900;
   font-size: 130px;
   display: flex;
@@ -64,7 +65,7 @@ body{
   padding: 8px;
   margin: 10px;
   border-radius: 10px;
-  background-color: rgb(185, 34, 185);
+  background-color: rgb(128, 11, 128);
   color: white;
   font-weight: 600;
   font-size: 30px;
